@@ -14,6 +14,9 @@ const SearchPage = () => {
     if (event.key === "/") {
       event.preventDefault();
       inputRef.current.focus();
+    } else if (event.key.toLowerCase() === "enter") {
+      event.preventDefault();
+      searchMovie();
     }
   };
 
@@ -56,9 +59,9 @@ event happen the browser tell the react to render useEffect again*/
             placeholder={`Press "/" to focuse on this field`}
             ref={inputRef}
             onChange={(event) => setInputVal(event.target.value)}
-            onKeyPress={handleKeyPress}
+            onKeyDown={handleKeyPress}
           />
-          <button className="searchButton" type="submit" onClick={searchMovie}>
+          <button className="searchButton" tabIndex={0} onClick={searchMovie}>
             Search
           </button>
         </div>
